@@ -1,6 +1,6 @@
 package ru.itis.hateoasstudy;
 
-import org.aspectj.weaver.ast.Not;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -12,7 +12,9 @@ import ru.itis.hateoasstudy.repository.UserRepository;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Collections;
+
+import static java.util.Arrays.asList;
 
 @SpringBootApplication
 public class HateoasStudyApplication {
@@ -48,9 +50,9 @@ public class HateoasStudyApplication {
                 .notificationTime(Timestamp.valueOf(LocalDateTime.now()))
                 .status(NoteStatus.Draft)
                 .build();
-        noteRepository.saveAll(List.of(note1, note2));
-        marat.setNotes(List.of(note2));
-        ilnur.setNotes(List.of(note1));
+        noteRepository.saveAll(asList(note1, note2));
+        marat.setNotes(Collections.singletonList(note1));
+        ilnur.setNotes(Collections.singletonList(note2));
 
         Post post1 = Post.builder()
                 .author(ilnur)
@@ -67,8 +69,8 @@ public class HateoasStudyApplication {
         post1 = postRepository.save(post1);
         post2 = postRepository.save(post2);
 
-        marat.setPosts(List.of(post2));
-        ilnur.setPosts(List.of(post1));
+        marat.setPosts(Collections.singletonList(post2));
+        ilnur.setPosts(Collections.singletonList(post1));
 
         Comment comment1 = Comment.builder()
                 .author(ilnur)
@@ -88,14 +90,14 @@ public class HateoasStudyApplication {
                 .post(post1)
                 .createdDate(Timestamp.valueOf(LocalDateTime.now()))
                 .build();
-        commentRepository.saveAll(List.of(comment1, comment2, comment3));
-        post1.setComments(List.of(comment3));
-        post2.setComments(List.of(comment1, comment2));
-        postRepository.saveAll(List.of(post1, post2));
+        commentRepository.saveAll(asList(comment1, comment2, comment3));
+        post1.setComments(Collections.singletonList(comment3));
+        post2.setComments(asList(comment1, comment2));
+        postRepository.saveAll(asList(post1, post2));
 
-        marat.setComments(List.of(comment2, comment3));
-        ilnur.setComments(List.of(comment1));
-        userRepository.saveAll(List.of(marat, ilnur));
+        marat.setComments(asList(comment2, comment3));
+        ilnur.setComments(Collections.singletonList(comment1));
+        userRepository.saveAll(asList(marat, ilnur));
     }
 
 }

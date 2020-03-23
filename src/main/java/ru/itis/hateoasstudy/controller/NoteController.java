@@ -12,10 +12,10 @@ import ru.itis.hateoasstudy.service.NoteServiceImpl;
 
 @RepositoryRestController
 @AllArgsConstructor
-public class UserController {
+public class NoteController {
     private NoteServiceImpl noteService;
 
-    @RequestMapping(value = "/notes/{note-id}/post", method = RequestMethod.PUT)
+    @RequestMapping(value = "/notes/{note-id}/publish", method = RequestMethod.PUT)
     public @ResponseBody
     ResponseEntity<?> post(@PathVariable("note-id") Long noteId) {
         return ResponseEntity.ok(
@@ -23,7 +23,7 @@ public class UserController {
                         noteService.postNote(noteId)));
     }
 
-    @RequestMapping(value = "/notes/{note-id}/post", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/notes/{note-id}/delete", method = RequestMethod.DELETE)
     public @ResponseBody
     ResponseEntity<?> delete(@PathVariable("note-id") Long noteId) {
         return ResponseEntity.ok(
