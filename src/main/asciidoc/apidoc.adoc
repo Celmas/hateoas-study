@@ -1,0 +1,42 @@
+:snippets: ../../../target/snippets
+= Описание API по курсам
+
+== Методы
+
+|===
+|Метод | Назначение
+|`PUT`
+|Обновить сущность или ее состояние
+|`DELETE`
+|Удаление сущности
+|===
+
+=== Публикация заметки
+
+Можно опубликовать заметки со статусом *POSTED* и *DREFT*
+
+.request
+
+include::{snippets}/posted_note/http-request.adoc[]
+
+.response
+
+include::{snippets}/posted_note/http-response.adoc[]
+
+.response-fields
+
+include::{snippets}/posted_note/response-fields.adoc[]
+
+=== Удаление комментариев у поста
+
+.request
+
+include::{snippets}/flushed_comment/http-request.adoc[]
+
+.response
+
+include::{snippets}/flushed_comment/http-response.adoc[]
+
+.response-fields
+
+include::{snippets}/flushed_comment/response-fields.adoc[]
