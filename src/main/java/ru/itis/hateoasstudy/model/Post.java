@@ -19,7 +19,7 @@ public class Post {
     @GeneratedValue
     private Long id;
 
-    private String tittle;
+    private String title;
     private String description;
     @OneToOne
     private User author;

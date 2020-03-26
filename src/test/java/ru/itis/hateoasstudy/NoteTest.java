@@ -57,8 +57,7 @@ public class NoteTest {
                         ),*/ responseFields(
                         fieldWithPath("title").description("Название заметки"),
                         fieldWithPath("status").description("Статус заметки"),
-                        fieldWithPath("notificationTime").description("Время для напоминания"),
-                        fieldWithPath("_links").description("<<beer-links,Links>> to other resources").ignored()
+                        fieldWithPath("notificationTime").description("Время для напоминания")
                 )));
     }
 

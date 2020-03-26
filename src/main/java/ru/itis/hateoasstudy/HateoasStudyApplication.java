@@ -56,13 +56,13 @@ public class HateoasStudyApplication {
 
         Post post1 = Post.builder()
                 .author(ilnur)
-                .tittle("JavaLab топ")
+                .title("JavaLab топ")
                 .description("temp")
                 .createdDate(Timestamp.valueOf(LocalDateTime.now()))
                 .build();
         Post post2 = Post.builder()
                 .author(marat)
-                .tittle("DataLab топ")
+                .title("DataLab топ")
                 .description("Враньё")
                 .createdDate(Timestamp.valueOf(LocalDateTime.now()))
                 .build();
