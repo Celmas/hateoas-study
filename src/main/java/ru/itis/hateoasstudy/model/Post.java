@@ -27,4 +27,12 @@ public class Post {
 
     @OneToMany
     private List<Comment> comments;
+
+    public void flushComments() {
+        if (comments.isEmpty()) {
+            throw new IllegalArgumentException();
+        } else {
+            this.comments.clear();
+        }
+    }
 }
