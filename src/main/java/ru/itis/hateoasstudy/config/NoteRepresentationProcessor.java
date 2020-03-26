@@ -14,8 +14,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Component
 @AllArgsConstructor
-public class NoteConfiguration implements RepresentationModelProcessor<EntityModel<Note>> {
-    private RepositoryEntityLinks links;
+public class NoteRepresentationProcessor implements RepresentationModelProcessor<EntityModel<Note>> {
 
     @Override
     public EntityModel<Note> process(EntityModel<Note> model) {
@@ -23,9 +22,10 @@ public class NoteConfiguration implements RepresentationModelProcessor<EntityMod
         if (content != null && content.getStatus() != NoteStatus.Deleted && content.getStatus() != NoteStatus.Posted) {
             model.add(WebMvcLinkBuilder.linkTo(methodOn(NoteController.class).post(content.getId())).withRel("publish"));
         }
-        if (content != null && content.getStatus() != NoteStatus.Deleted) {
-            model.add(WebMvcLinkBuilder.linkTo(methodOn(NoteController.class).delete(content.getId())).withRel("delete"));
-        }
+
+//        if (content != null && content.getStatus() != NoteStatus.Posted) {
+//            model.add(links.linkToItemResource(Note.class, content.getId()).withRel("delete"));
+//        }
         return model;
     }
 }

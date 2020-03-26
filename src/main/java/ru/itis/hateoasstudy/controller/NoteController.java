@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import ru.itis.hateoasstudy.service.NoteService;
 import ru.itis.hateoasstudy.service.NoteServiceImpl;
 
 @RepositoryRestController
 @AllArgsConstructor
 public class NoteController {
-    private NoteServiceImpl noteService;
+    private NoteService noteService;
 
     @RequestMapping(value = "/notes/{note-id}/publish", method = RequestMethod.PUT)
     public @ResponseBody
@@ -21,13 +22,5 @@ public class NoteController {
         return ResponseEntity.ok(
                 new EntityModel<>(
                         noteService.postNote(noteId)));
-    }
-
-    @RequestMapping(value = "/notes/{note-id}/delete", method = RequestMethod.DELETE)
-    public @ResponseBody
-    ResponseEntity<?> delete(@PathVariable("note-id") Long noteId) {
-        return ResponseEntity.ok(
-                new EntityModel<>(
-                        noteService.deleteNote(noteId)));
     }
 }

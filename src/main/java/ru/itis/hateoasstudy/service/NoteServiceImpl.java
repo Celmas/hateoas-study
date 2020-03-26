@@ -11,12 +11,6 @@ import ru.itis.hateoasstudy.repository.NoteRepository;
 public class NoteServiceImpl implements NoteService {
     private final NoteRepository noteRepository;
 
-    public Note deleteNote(Long id) {
-        Note note = noteRepository.findById(id).orElseThrow(IllegalArgumentException::new);
-        note.setStatus(NoteStatus.Deleted);
-        return noteRepository.save(note);
-    }
-
     public Note postNote(Long id) {
         Note note = noteRepository.findById(id).orElseThrow(IllegalArgumentException::new);
         note.post();
